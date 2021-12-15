@@ -3,12 +3,25 @@ import { Component } from "react";
 class Shows extends Component {
     constructor(){
       super();
-      this.state = {}
+      this.state = {
+          display: true,
+      }
     }
   
+    // Conditional Rendering
+    // Fetching data - Display
+    // Practice inputs - onClick, onSelect, onCheckbox
+    // Storing different things ins tate: arrays, objects, booleans
+
     render(){
       return(
-        <h1>Shows Page</h1>
+        <div>
+            <h1>Shows Page</h1>
+            { this.state.display && 
+                <div>Thing to show/hide</div>
+            }
+
+        </div>
       )
     }
   }
