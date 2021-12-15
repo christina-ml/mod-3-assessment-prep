@@ -4,15 +4,15 @@ import {
   Route,
   Switch 
 } from 'react-router-dom';
-import { Component } from 'react';
 import Home from './components/Home';
+import Shows from './components/Shows';
 
 function App() {
   return (
     <Router>
       <Switch>
         <Route path="/" component={Home} />
-        {/* <Route path="/" component={Shows} /> */}
+        <Route path="/shows" component={Shows} />
       </Switch>
     </Router>
   );
