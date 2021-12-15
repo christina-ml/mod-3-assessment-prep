@@ -6,6 +6,7 @@ class Shows extends Component {
       this.state = {
           display: true,
           data: [],
+          firstResult: {},
       }
     }
   
@@ -17,8 +18,19 @@ class Shows extends Component {
     handleFetch=()=>{
         fetch("https://pursuit-tv-show.herokuapp.com/api/shows")
             .then(res=>res.json())
-            .then((data)=>{
-                console.log(data);
+            .then((allData)=>{
+                // console.log(data);
+
+                // can do all your logic in here, to do additional filtering if you want
+                let filtered = allData.filter((show)=>{
+                    return show.type === "TV Show" || show.type === "";
+                })
+
+                console.log(filtered);
+                this.setState({
+                    data: filtered,
+                    firstResult: filtered[0],
+                })
             })
     }
 
@@ -33,10 +45,28 @@ class Shows extends Component {
     }
 
     render(){
+        let showElArr = this.state.data.map((show)=>{
+            return (
+                <div>{show.title}</div>
+            )
+        })
+
       return(
         <div>
             <h1>Shows Page</h1>
-            Show/Hide
+            
+            <h3>First Result</h3>
+            <div>
+                { this.state.firstResult.title }
+            </div>
+
+            <h3>Shows</h3>
+                { showElArr }
+
+
+
+
+            <h3>Show/Hide</h3>
             <input 
                 type="checkbox" 
                 onChange={this.handleShowHide}
