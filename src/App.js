@@ -5,19 +5,7 @@ import {
   Switch 
 } from 'react-router-dom';
 import { Component } from 'react';
-
-class Home extends Component {
-  constructor(){
-    super();
-    this.state = {}
-  }
-
-  render(){
-    return(
-      <h1>Home Page</h1>
-    )
-  }
-}
+import Home from './components/Home';
 
 function App() {
   return (
